@@ -1,0 +1,53 @@
+.btn {
+    @apply rounded-[18px] p-[18px_27px];
+    @apply border border-transparent;
+    @apply transition-all duration-200 ease-linear;
+    @apply text-center;
+
+    &:hover {
+        @apply -translate-y-1;
+        @apply shadow-xl;
+    }
+    &:focus {
+        @apply shadow-inner;
+    }
+
+    &:active {
+        @apply animate-gelatine;
+    }
+
+    &-xs {
+        @apply px-3 py-2;
+        @apply rounded-sm;
+    }
+
+    &-sm {
+        @apply px-4 py-3;
+        @apply rounded-md;
+    }
+
+    // Variant
+    &-ghost {
+        @apply bg-transparent;
+        @apply text-zinc-900 font-bold;
+        &:hover {
+            @apply no-underline;
+            @apply text-blog-primary;
+            @apply border-blog-primary;
+        }
+    }
+    &-outlined {
+        @apply bg-transparent;
+        @apply border border-blog-primary;
+        @apply text-blog-primary;
+        &:hover {
+            @apply bg-blog-primary;
+        }
+    }
+
+    // Color
+    &-primary {
+        @apply bg-blog-primary;
+        @apply text-white;
+    }
+}

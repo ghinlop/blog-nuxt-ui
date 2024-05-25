@@ -1,0 +1,18 @@
+.main-menu {
+    @apply flex items-center gap-14 font-medium;
+    a {
+        @apply block relative;
+        @apply transition-all duration-200 ease-linear;
+        &:hover:not(.active) {
+            @apply text-blog-primary;
+        }
+        &:focus {
+            @apply text-blog-primary;
+            @apply scale-95;
+        }
+        &.active {
+            @apply text-blog-primary;
+            @apply animate-gelatine;
+        }
+    }
+}
