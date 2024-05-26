@@ -15,5 +15,13 @@ export default defineAppConfig({
         icons: {
             dynamic: true,
         },
+        input: {
+            placeholder: "placeholder-blog-primary font-meidum",
+            rounded: "rounded-xl",
+            padding: {
+                xl: "px-6 py-4",
+            },
+            icon: { trailing: { pointer: "" } },
+        },
     },
 });

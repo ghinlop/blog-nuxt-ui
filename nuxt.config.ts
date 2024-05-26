@@ -3,7 +3,7 @@ export default defineNuxtConfig({
     devtools: { enabled: process.env.NODE_ENV !== "production" },
     app: {
         head: {
-            title: "SUZU BLOG",
+            title: "Eatly",
             link: [
                 {
                     rel: "icon",
