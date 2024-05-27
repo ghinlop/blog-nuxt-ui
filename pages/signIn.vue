@@ -1,13 +1,20 @@
 <script lang="ts" setup>
+import { useAuthController } from "~/modules/auth/auth.controller";
+import { useAuthState, usePasswordState } from "~/modules/auth/auth.state";
+
 definePageMeta({
     layout: "user",
 });
+
+const { show: password, type: passwordType } = usePasswordState();
+const { body } = useAuthState();
+const { LOGIN } = useAuthController;
 </script>
 
 <template>
-    <UForm :state="{}" class="flex flex-col">
-        <h2 class="text-2xl font-bold text-center">Sign Up To eatly</h2>
-        <div class="grid grid-cols-2 gap-5 mt-9 mb-6">
+    <UForm :state="body" @click="() => LOGIN(body)" class="flex flex-col">
+        <h2 class="text-2xl font-bold text-center mb-9">Sign In To eatly</h2>
+        <div class="grid grid-cols-2 gap-5 mb-6">
             <div class="col-span-1">
                 <UButton
                     block
@@ -34,21 +41,12 @@ definePageMeta({
         <p class="text-center text-[#005A64]/35 mb-8">OR</p>
         <div class="flex flex-col gap-4">
             <UFormGroup>
-                <UInput color="violet" size="xl" placeholder="Tom Hillson">
-                    <template #leading>
-                        <Icon
-                            class="text-blog-primary"
-                            name="i-fa6-solid:user-large"
-                        ></Icon>
-                    </template>
-                </UInput>
-            </UFormGroup>
-            <UFormGroup>
                 <UInput
                     type="email"
                     color="violet"
                     size="xl"
                     placeholder="TomHill@Mail.com"
+                    v-model="body.email"
                 >
                     <template #leading>
                         <Icon
@@ -59,23 +57,39 @@ definePageMeta({
                 </UInput>
             </UFormGroup>
             <UFormGroup>
-                <UInput type="password" color="violet" size="xl" placeholder="••••••••">
+                <UInput
+                    :type="passwordType"
+                    color="violet"
+                    size="xl"
+                    placeholder="••••••••"
+                    v-model="body.password"
+                >
                     <template #leading>
                         <Icon class="text-blog-primary" name="i-fa6-solid:lock"></Icon>
                     </template>
                     <template #trailing>
-                        <UButton variant="link" icon="i-fa6-solid:eye-slash"> </UButton>
+                        <UButton
+                            variant="link"
+                            :icon="password ? 'i-fa6-solid:eye' : 'i-fa6-solid:eye-slash'"
+                            @click="password = !password"
+                        >
+                        </UButton>
                     </template>
                 </UInput>
+                <div class="block text-right">
+                    <UButton variant="link" :to="{ name: 'forgot' }"
+                        >Forget Password ?</UButton
+                    >
+                </div>
             </UFormGroup>
-            <UButton type="submit" block size="2xl">SIGN UP</UButton>
+            <UButton type="submit" block size="2xl">SIGN IN</UButton>
             <p class="text-center">
-                Already Have An Account?
+                Create A New Account?
                 <NuxtLink
                     tag="a"
                     :to="{ name: 'signUp' }"
                     class="inline font-bold text-blog-primary"
-                    >Log In</NuxtLink
+                    >Sign Up</NuxtLink
                 >
             </p>
         </div>

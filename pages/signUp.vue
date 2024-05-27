@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useAuthController } from "~/modules/auth/auth.controller";
 import { useAuthState, usePasswordState } from "~/modules/auth/auth.state";
 
 definePageMeta({
@@ -7,12 +8,13 @@ definePageMeta({
 
 const { show: password, type: passwordType } = usePasswordState();
 const { body } = useAuthState();
+const { REGISTER } = useAuthController;
 </script>
 
 <template>
-    <UForm :state="body" class="flex flex-col">
-        <h2 class="text-2xl font-bold text-center">Sign Up To eatly</h2>
-        <div class="grid grid-cols-2 gap-5 mt-9 mb-6">
+    <UForm :state="body" @submit="() => REGISTER(body)" class="flex flex-col">
+        <h2 class="text-2xl font-bold text-center mb-9">Sign Up To eatly</h2>
+        <div class="grid grid-cols-2 gap-5 mb-6">
             <div class="col-span-1">
                 <UButton
                     block
