@@ -10,18 +10,24 @@ const activeIndex = ref<number>(0);
         <div
             class="lg:w-[calc(100%/7*4)] w-full lg:px-10 px-6 flex flex-col h-full overflow-y-auto xl:pb-8 lg:pb-5 pb-8"
         >
-            <div class="xl:pb-8 lg:py-5 py-8">
-                <div class="inline-block">
-                    <NuxtLink to="/" tag="a">
-                        <img src="/logo.png" alt="" />
-                    </NuxtLink>
+            <div class="flex flex-col flex-grow justify-center">
+                <div class="xl:pb-8 lg:py-5 py-8">
+                    <div class="inline-block">
+                        <NuxtLink to="/" tag="a">
+                            <img src="/logo.png" alt="" />
+                        </NuxtLink>
+                    </div>
                 </div>
+                <main class="flex-grow flex items-center justify-center">
+                    <div class="lg:w-1/2 md:w-2/3 sm:w-3/5">
+                        <slot />
+                    </div>
+                </main>
             </div>
-            <main class="flex-grow flex items-center justify-center">
-                <div class="lg:w-1/2 md:w-2/3 sm:w-3/5">
-                    <slot />
-                </div>
-            </main>
+            <div class="flex justify-between text-[#718096]">
+                <ULink>Privacy Policy</ULink>
+                <span>Copyright 2022</span>
+            </div>
         </div>
         <div class="w-[calc(100%/7*3)] lg:block hidden bg-[#845dea] relative">
             <img
