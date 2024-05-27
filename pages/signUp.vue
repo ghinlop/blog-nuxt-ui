@@ -1,11 +1,16 @@
 <script lang="ts" setup>
+import { useAuthState, usePasswordState } from "~/modules/auth/auth.state";
+
 definePageMeta({
     layout: "user",
 });
+
+const { show: password, type: passwordType } = usePasswordState();
+const { body } = useAuthState();
 </script>
 
 <template>
-    <UForm :state="{}" class="flex flex-col">
+    <UForm :state="body" class="flex flex-col">
         <h2 class="text-2xl font-bold text-center">Sign Up To eatly</h2>
         <div class="grid grid-cols-2 gap-5 mt-9 mb-6">
             <div class="col-span-1">
@@ -49,6 +54,7 @@ definePageMeta({
                     color="violet"
                     size="xl"
                     placeholder="TomHill@Mail.com"
+                    v-model="body.email"
                 >
                     <template #leading>
                         <Icon
@@ -59,12 +65,23 @@ definePageMeta({
                 </UInput>
             </UFormGroup>
             <UFormGroup>
-                <UInput type="password" color="violet" size="xl" placeholder="••••••••">
+                <UInput
+                    :type="passwordType"
+                    color="violet"
+                    size="xl"
+                    placeholder="••••••••"
+                    v-model="body.password"
+                >
                     <template #leading>
                         <Icon class="text-blog-primary" name="i-fa6-solid:lock"></Icon>
                     </template>
                     <template #trailing>
-                        <UButton variant="link" icon="i-fa6-solid:eye-slash"> </UButton>
+                        <UButton
+                            variant="link"
+                            :icon="password ? 'i-fa6-solid:eye' : 'i-fa6-solid:eye-slash'"
+                            @click="password = !password"
+                        >
+                        </UButton>
                     </template>
                 </UInput>
             </UFormGroup>
