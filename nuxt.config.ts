@@ -17,12 +17,14 @@ export default defineNuxtConfig({
             mode: "out-in", // default
         },
     },
+    css: ["swiper/css"],
     modules: [
         "@nuxtjs/google-fonts",
         "@pinia/nuxt",
         "@nuxt/image",
         "nuxt-icon",
         "@nuxt/ui",
+        // "nuxt-swiper",
     ],
     ui: {
         safelistColors: ["gray", "zinc"],

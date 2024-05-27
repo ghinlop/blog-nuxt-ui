@@ -46,14 +46,6 @@ const { body, loading, LOGIN } = useAuthState();
                     placeholder="TomHill@Mail.com"
                     v-model="body.email"
                     :disabled="loading.login"
-                    :ui="{
-                        color: {
-                            violet: {
-                                outline:
-                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
-                            },
-                        },
-                    }"
                 >
                     <template #leading>
                         <Icon
@@ -71,14 +63,6 @@ const { body, loading, LOGIN } = useAuthState();
                     placeholder="••••••••"
                     v-model="body.password"
                     :disabled="loading.login"
-                    :ui="{
-                        color: {
-                            violet: {
-                                outline:
-                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
-                            },
-                        },
-                    }"
                 >
                     <template #leading>
                         <Icon class="text-blog-primary" name="i-fa6-solid:lock"></Icon>
@@ -98,7 +82,12 @@ const { body, loading, LOGIN } = useAuthState();
                     >
                 </div>
             </UFormGroup>
-            <UButton type="submit" block size="2xl" :loading="loading.login"
+            <UButton
+                type="submit"
+                block
+                size="2xl"
+                class="min-h-[55px]"
+                :loading="loading.login"
                 >SIGN IN</UButton
             >
             <p class="text-center">

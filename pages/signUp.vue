@@ -40,19 +40,7 @@ const { body, loading, REGISTER } = useAuthState();
         <p class="text-center text-[#005A64]/35 mb-8">OR</p>
         <div class="flex flex-col gap-4">
             <UFormGroup>
-                <UInput
-                    color="violet"
-                    size="xl"
-                    placeholder="Tom Hillson"
-                    :ui="{
-                        color: {
-                            violet: {
-                                outline:
-                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
-                            },
-                        },
-                    }"
-                >
+                <UInput color="violet" size="xl" placeholder="Tom Hillson">
                     <template #leading>
                         <Icon
                             class="text-blog-primary"
@@ -68,14 +56,6 @@ const { body, loading, REGISTER } = useAuthState();
                     size="xl"
                     placeholder="TomHill@Mail.com"
                     v-model="body.email"
-                    :ui="{
-                        color: {
-                            violet: {
-                                outline:
-                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
-                            },
-                        },
-                    }"
                 >
                     <template #leading>
                         <Icon
@@ -92,14 +72,6 @@ const { body, loading, REGISTER } = useAuthState();
                     size="xl"
                     placeholder="••••••••"
                     v-model="body.password"
-                    :ui="{
-                        color: {
-                            violet: {
-                                outline:
-                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
-                            },
-                        },
-                    }"
                 >
                     <template #leading>
                         <Icon class="text-blog-primary" name="i-fa6-solid:lock"></Icon>
@@ -121,14 +93,6 @@ const { body, loading, REGISTER } = useAuthState();
                     size="xl"
                     placeholder="••••••••"
                     v-model="body.retype_password"
-                    :ui="{
-                        color: {
-                            violet: {
-                                outline:
-                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
-                            },
-                        },
-                    }"
                 >
                     <template #leading>
                         <Icon class="text-blog-primary" name="i-fa6-solid:lock"></Icon>
@@ -147,7 +111,7 @@ const { body, loading, REGISTER } = useAuthState();
                     </template>
                 </UInput>
             </UFormGroup>
-            <UButton type="submit" block size="2xl">SIGN UP</UButton>
+            <UButton type="submit" block size="2xl" class="min-h-[55px]">SIGN UP</UButton>
             <p class="text-center">
                 Already Have An Account?
                 <NuxtLink

@@ -19,14 +19,6 @@ const { body, loading, FORGOT } = useAuthState();
                     size="xl"
                     placeholder="TomHill@Mail.com"
                     v-model="body.email"
-                    :ui="{
-                        color: {
-                            violet: {
-                                outline:
-                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
-                            },
-                        },
-                    }"
                 >
                     <template #leading>
                         <Icon
@@ -36,7 +28,7 @@ const { body, loading, FORGOT } = useAuthState();
                     </template>
                 </UInput>
             </UFormGroup>
-            <UButton type="submit" block size="2xl">SEND</UButton>
+            <UButton type="submit" block size="2xl" class="min-h-[55px]">SEND</UButton>
             <p class="text-center">
                 Already Have An Account?
                 <NuxtLink
