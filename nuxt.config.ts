@@ -39,4 +39,18 @@ export default defineNuxtConfig({
             Inter: [400, 500, 600],
         },
     },
+    router: {
+        options: {
+            scrollBehaviorType: "smooth",
+        },
+    },
+    runtimeConfig: {
+        apiUrl: undefined,
+        public: {
+            apiUrl: undefined,
+            dev: process.env.NODE_ENV !== "production" || true,
+            web: false,
+            expired: false,
+        },
+    },
 });

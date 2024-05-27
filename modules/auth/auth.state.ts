@@ -31,7 +31,7 @@ export const useAuthState = () => {
         forgot: false,
     });
 
-    function LOGIN() {
+    function Login() {
         const { error } = AUTH_VALID.login.validate(body);
         if (error) {
             TOAST.error(error.message);
@@ -42,7 +42,7 @@ export const useAuthState = () => {
         setTimeout(() => (loading.login = false), 5000);
     }
 
-    function REGISTER() {
+    function Register() {
         const { error } = AUTH_VALID.register.validate(body);
         if (error) {
             TOAST.error(error.message);
@@ -50,7 +50,7 @@ export const useAuthState = () => {
         }
     }
 
-    function FORGOT() {
+    function Forgot() {
         const { error } = AUTH_VALID.forgot.validate(body);
         if (error) {
             TOAST.error(error.message);
@@ -58,7 +58,7 @@ export const useAuthState = () => {
         }
     }
 
-    function CLEAR_FROM() {
+    function Clear_form() {
         body.email = undefined;
         body.password = undefined;
         body.retype_password = undefined;
@@ -68,9 +68,9 @@ export const useAuthState = () => {
     return {
         body,
         loading,
-        LOGIN,
-        REGISTER,
-        FORGOT,
-        CLEAR_FROM,
+        Login,
+        Register,
+        Forgot,
+        Clear_form,
     };
 };

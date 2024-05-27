@@ -5,11 +5,11 @@ definePageMeta({
     layout: "user",
 });
 
-const { body, loading, FORGOT } = useAuthState();
+const { body, loading, Forgot } = useAuthState();
 </script>
 
 <template>
-    <UForm :state="body" :loading @submit="FORGOT" class="flex flex-col">
+    <UForm :state="body" @submit="Forgot" class="flex flex-col">
         <h2 class="text-2xl font-bold text-center mb-9">Forgot Your Password</h2>
         <div class="flex flex-col gap-4">
             <UFormGroup>
@@ -19,6 +19,7 @@ const { body, loading, FORGOT } = useAuthState();
                     size="xl"
                     placeholder="TomHill@Mail.com"
                     v-model="body.email"
+                    :disabled="loading.forgot"
                 >
                     <template #leading>
                         <Icon

@@ -29,7 +29,6 @@ import { MENU } from "~/modules/menu/menu.store";
         </div>
     </div>
 </template>
-<style scoped lang="scss" src="~/assets/styles/button.scss"></style>
 <style scoped lang="scss">
 ul {
     @apply flex flex-col font-medium;

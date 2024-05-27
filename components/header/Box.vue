@@ -58,5 +58,64 @@ const store = useMenuStore();
     </header>
 </template>
 
-<style lang="scss" scoped src="~/assets/styles/header.scss"></style>
-<style lang="scss" scoped src="~/assets/styles/menu.scss"></style>
+<style lang="scss">
+.header {
+    @apply font-['Inter'];
+    @apply text-lg;
+
+    @screen lg {
+        @apply text-xs;
+    }
+
+    @screen xl {
+        @apply text-base;
+    }
+
+    &-box {
+        @apply container px-8;
+        @apply border-b border-blog-liner;
+        @apply py-8;
+        @screen lg {
+            @apply pt-16 pb-4;
+        }
+        @screen xl {
+            @apply pb-3 pt-12 px-0;
+        }
+    }
+    &-nav {
+        @apply flex justify-between items-center gap-16;
+        @screen xl {
+            @apply gap-x-28;
+        }
+
+        &_menu {
+            @apply flex-grow justify-between hidden gap-x-20;
+            @screen lg {
+                @apply flex;
+            }
+            @screen xl {
+                @apply gap-x-28;
+            }
+        }
+    }
+}
+
+.main-menu {
+    @apply flex items-center gap-14 font-medium;
+    a {
+        @apply block relative;
+        @apply transition-all duration-200 ease-linear;
+        &:hover:not(.active) {
+            @apply text-blog-primary;
+        }
+        &:focus {
+            @apply text-blog-primary;
+            @apply scale-95;
+        }
+        &.active {
+            @apply text-blog-primary;
+            @apply animate-gelatine;
+        }
+    }
+}
+</style>

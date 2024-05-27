@@ -6,11 +6,11 @@ definePageMeta({
 });
 
 const { show: password, type: passwordType } = usePasswordState();
-const { body, loading, LOGIN } = useAuthState();
+const { body, loading, Login } = useAuthState();
 </script>
 
 <template>
-    <UForm :state="body" :loading="loading.login" @submit="LOGIN" class="flex flex-col">
+    <UForm :state="body" @submit="Login" class="flex flex-col">
         <h2 class="text-2xl font-bold text-center mb-9">Sign In To eatly</h2>
         <div class="grid grid-cols-2 gap-5 mb-6">
             <div class="col-span-1">
