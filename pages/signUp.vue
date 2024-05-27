@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useAuthController } from "~/modules/auth/auth.controller";
 import { useAuthState, usePasswordState } from "~/modules/auth/auth.state";
 
 definePageMeta({
@@ -7,12 +6,12 @@ definePageMeta({
 });
 
 const { show: password, type: passwordType } = usePasswordState();
-const { body } = useAuthState();
-const { REGISTER } = useAuthController;
+const { show: retype_password, type: retype_passwordType } = usePasswordState();
+const { body, loading, REGISTER } = useAuthState();
 </script>
 
 <template>
-    <UForm :state="body" @submit="() => REGISTER(body)" class="flex flex-col">
+    <UForm :state="body" :loading @submit="REGISTER" class="flex flex-col">
         <h2 class="text-2xl font-bold text-center mb-9">Sign Up To eatly</h2>
         <div class="grid grid-cols-2 gap-5 mb-6">
             <div class="col-span-1">
@@ -41,7 +40,19 @@ const { REGISTER } = useAuthController;
         <p class="text-center text-[#005A64]/35 mb-8">OR</p>
         <div class="flex flex-col gap-4">
             <UFormGroup>
-                <UInput color="violet" size="xl" placeholder="Tom Hillson">
+                <UInput
+                    color="violet"
+                    size="xl"
+                    placeholder="Tom Hillson"
+                    :ui="{
+                        color: {
+                            violet: {
+                                outline:
+                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
+                            },
+                        },
+                    }"
+                >
                     <template #leading>
                         <Icon
                             class="text-blog-primary"
@@ -57,6 +68,14 @@ const { REGISTER } = useAuthController;
                     size="xl"
                     placeholder="TomHill@Mail.com"
                     v-model="body.email"
+                    :ui="{
+                        color: {
+                            violet: {
+                                outline:
+                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
+                            },
+                        },
+                    }"
                 >
                     <template #leading>
                         <Icon
@@ -73,6 +92,14 @@ const { REGISTER } = useAuthController;
                     size="xl"
                     placeholder="••••••••"
                     v-model="body.password"
+                    :ui="{
+                        color: {
+                            violet: {
+                                outline:
+                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
+                            },
+                        },
+                    }"
                 >
                     <template #leading>
                         <Icon class="text-blog-primary" name="i-fa6-solid:lock"></Icon>
@@ -82,6 +109,39 @@ const { REGISTER } = useAuthController;
                             variant="link"
                             :icon="password ? 'i-fa6-solid:eye' : 'i-fa6-solid:eye-slash'"
                             @click="password = !password"
+                        >
+                        </UButton>
+                    </template>
+                </UInput>
+            </UFormGroup>
+            <UFormGroup>
+                <UInput
+                    :type="retype_passwordType"
+                    color="violet"
+                    size="xl"
+                    placeholder="••••••••"
+                    v-model="body.retype_password"
+                    :ui="{
+                        color: {
+                            violet: {
+                                outline:
+                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
+                            },
+                        },
+                    }"
+                >
+                    <template #leading>
+                        <Icon class="text-blog-primary" name="i-fa6-solid:lock"></Icon>
+                    </template>
+                    <template #trailing>
+                        <UButton
+                            variant="link"
+                            :icon="
+                                retype_password
+                                    ? 'i-fa6-solid:eye'
+                                    : 'i-fa6-solid:eye-slash'
+                            "
+                            @click="retype_password = !retype_password"
                         >
                         </UButton>
                     </template>

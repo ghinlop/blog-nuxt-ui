@@ -1,4 +1,5 @@
-import type { AuthFormBody } from "./auth.type";
+import type { AuthFormBody, AuthLoading } from "./auth.type";
+import { AUTH_VALID } from "./auth.valid";
 
 export const usePasswordState = () => {
     const show = ref(false);
@@ -24,5 +25,52 @@ export const usePasswordState = () => {
 
 export const useAuthState = () => {
     const body = reactive<AuthFormBody>({});
-    return { body };
+    const loading = reactive<AuthLoading>({
+        login: false,
+        register: false,
+        forgot: false,
+    });
+
+    function LOGIN() {
+        const { error } = AUTH_VALID.login.validate(body);
+        if (error) {
+            TOAST.error(error.message);
+            return;
+        }
+
+        loading.login = true;
+        setTimeout(() => (loading.login = false), 5000);
+    }
+
+    function REGISTER() {
+        const { error } = AUTH_VALID.register.validate(body);
+        if (error) {
+            TOAST.error(error.message);
+            return;
+        }
+    }
+
+    function FORGOT() {
+        const { error } = AUTH_VALID.forgot.validate(body);
+        if (error) {
+            TOAST.error(error.message);
+            return;
+        }
+    }
+
+    function CLEAR_FROM() {
+        body.email = undefined;
+        body.password = undefined;
+        body.retype_password = undefined;
+        body.full_name = undefined;
+    }
+
+    return {
+        body,
+        loading,
+        LOGIN,
+        REGISTER,
+        FORGOT,
+        CLEAR_FROM,
+    };
 };

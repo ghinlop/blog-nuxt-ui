@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useAuthController } from "~/modules/auth/auth.controller";
 import { useAuthState, usePasswordState } from "~/modules/auth/auth.state";
 
 definePageMeta({
@@ -7,12 +6,11 @@ definePageMeta({
 });
 
 const { show: password, type: passwordType } = usePasswordState();
-const { body } = useAuthState();
-const { LOGIN } = useAuthController;
+const { body, loading, LOGIN } = useAuthState();
 </script>
 
 <template>
-    <UForm :state="body" @click="() => LOGIN(body)" class="flex flex-col">
+    <UForm :state="body" :loading="loading.login" @submit="LOGIN" class="flex flex-col">
         <h2 class="text-2xl font-bold text-center mb-9">Sign In To eatly</h2>
         <div class="grid grid-cols-2 gap-5 mb-6">
             <div class="col-span-1">
@@ -47,6 +45,15 @@ const { LOGIN } = useAuthController;
                     size="xl"
                     placeholder="TomHill@Mail.com"
                     v-model="body.email"
+                    :disabled="loading.login"
+                    :ui="{
+                        color: {
+                            violet: {
+                                outline:
+                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
+                            },
+                        },
+                    }"
                 >
                     <template #leading>
                         <Icon
@@ -63,6 +70,15 @@ const { LOGIN } = useAuthController;
                     size="xl"
                     placeholder="••••••••"
                     v-model="body.password"
+                    :disabled="loading.login"
+                    :ui="{
+                        color: {
+                            violet: {
+                                outline:
+                                    'disabled:bg-[#F5F5F5] disabled:!text-[#C2C3CB] disabled:ring-0',
+                            },
+                        },
+                    }"
                 >
                     <template #leading>
                         <Icon class="text-blog-primary" name="i-fa6-solid:lock"></Icon>
@@ -76,13 +92,15 @@ const { LOGIN } = useAuthController;
                         </UButton>
                     </template>
                 </UInput>
-                <div class="block text-right">
-                    <UButton variant="link" :to="{ name: 'forgot' }"
+                <div class="text-right">
+                    <UButton :to="{ name: 'forgot' }" variant="link"
                         >Forget Password ?</UButton
                     >
                 </div>
             </UFormGroup>
-            <UButton type="submit" block size="2xl">SIGN IN</UButton>
+            <UButton type="submit" block size="2xl" :loading="loading.login"
+                >SIGN IN</UButton
+            >
             <p class="text-center">
                 Create A New Account?
                 <NuxtLink

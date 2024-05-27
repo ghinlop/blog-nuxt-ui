@@ -5,9 +5,11 @@ import "swiper/css";
 </script>
 
 <template>
-    <div class="min-h-dvh flex">
-        <div class="lg:w-[calc(100%/7*4)] w-full lg:px-10 px-6 flex flex-col">
-            <div class="xl:py-8 lg:py-5 py-8">
+    <div class="h-dvh flex overflow-hidden">
+        <div
+            class="lg:w-[calc(100%/7*4)] w-full lg:px-10 px-6 flex flex-col h-full overflow-y-auto xl:pb-8 lg:pb-5 pb-8"
+        >
+            <div class="xl:pb-8 lg:py-5 py-8">
                 <div class="inline-block">
                     <NuxtLink to="/" tag="a">
                         <img src="/logo.png" alt="" />
@@ -20,7 +22,7 @@ import "swiper/css";
                 </div>
             </main>
         </div>
-        <div class="w-[calc(100%/7*3)] lg:block hidden bg-blog-primary relative">
+        <div class="w-[calc(100%/7*3)] lg:block hidden bg-[#845dea] relative">
             <img
                 src="/user_pattern.png"
                 class="w-6/7 absolute bottom-0 left-0 z-10"
