@@ -11,21 +11,11 @@ import { MENU } from "~/modules/menu/menu.store";
                 }}</NuxtLink>
             </li>
         </ul>
-        <div class="grid grid-cols-2 gap-2 font-bold px-3">
-            <NuxtLink
-                tag="button"
-                :to="{ name: 'signIn' }"
-                class="btn btn-outlined btn-sm"
-            >
+        <div class="grid grid-cols-2 gap-2 font-bold px-4">
+            <UButton :to="{ name: 'signIn' }" variant="ghost" block size="xl">
                 Login
-            </NuxtLink>
-            <NuxtLink
-                tag="button"
-                :to="{ name: 'signUp' }"
-                class="btn btn-primary btn-sm"
-            >
-                Sign Up
-            </NuxtLink>
+            </UButton>
+            <UButton :to="{ name: 'signUp' }" block size="xl"> Sign Up </UButton>
         </div>
     </div>
 </template>
