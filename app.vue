@@ -10,7 +10,7 @@ if (setting) settingStore.setting = setting;
 
 useSeoMeta({
     titleTemplate: (title: string | undefined = undefined) => {
-        return (title ? title + " | " : "") + "Hiệp Khách Giang Hồ";
+        return (title ? title + " | " : "") + "Eatly";
     },
     description: () =>
         settingStore.setting ? settingStore.setting.site.description : "",
