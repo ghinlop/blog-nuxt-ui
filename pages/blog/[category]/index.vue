@@ -40,43 +40,66 @@ onMounted(async () => await load());
                 size="xl"
                 class="md:hidden"
             ></USelectMenu>
-            <div
+            <ul
                 class="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8"
             >
-                <UCard v-for="i in posts.data">
-                    <template #header>
-                        <img
-                            src="https://picsum.photos/id/1/300/300"
-                            alt=""
-                            class="size-full object-cover rounded-xl"
-                        />
-                    </template>
-                    <h3 class="font-bold line-clamp-2">{{ i.post_title }}</h3>
-                    <template #footer>
-                        <div class="flex justify-between items-center">
-                            <div class="flex gap-3">
-                                <div class="block">
-                                    <img
-                                        src="https://ui-avatars.com/api/?name=Ghin+Lop&size=128"
-                                        alt="Ghin Lop"
-                                        class="size-8 rounded-full overflow-hidden inline-block"
-                                    />
+                <li v-for="i in posts.data">
+                    <UCard :ui="{ base: 'min-h-full' }">
+                        <template #header>
+                            <NuxtLink
+                                tag="a"
+                                :to="{
+                                    name: 'blog-category-detail',
+                                    params: {
+                                        category: categoryActive.slug,
+                                        detail: i.slug,
+                                    },
+                                }"
+                            >
+                                <img
+                                    src="https://picsum.photos/seed/picsum/300/300"
+                                    alt=""
+                                    class="size-full object-cover rounded-xl"
+                                />
+                            </NuxtLink>
+                        </template>
+                        <NuxtLink
+                            tag="a"
+                            :to="{
+                                name: 'blog-category-detail',
+                                params: { category: categoryActive.slug, detail: i.slug },
+                            }"
+                        >
+                            <h3 class="font-bold line-clamp-2">
+                                {{ i.post_title }}
+                            </h3>
+                        </NuxtLink>
+                        <template #footer>
+                            <div class="flex justify-between items-center">
+                                <div class="flex gap-3">
+                                    <div class="block">
+                                        <img
+                                            src="https://ui-avatars.com/api/?name=Ghin+Lop&size=128"
+                                            alt="Ghin Lop"
+                                            class="size-8 rounded-full overflow-hidden inline-block"
+                                        />
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="uppercase font-normal text-zinc-500 text-[8px]"
+                                            >write by</span
+                                        >
+                                        <strong class="text-xs">Ghin Lop</strong>
+                                    </div>
                                 </div>
-                                <div class="flex flex-col">
-                                    <span
-                                        class="uppercase font-normal text-zinc-500 text-[8px]"
-                                        >write by</span
-                                    >
-                                    <strong class="text-xs">Ghin Lop</strong>
-                                </div>
+                                <span class="text-zinc-500 text-[10px] uppercase">{{
+                                    useDayjs().utc(i.created_at).format("DD MMM, YYYY")
+                                }}</span>
                             </div>
-                            <span class="text-zinc-500 text-[10px] uppercase">{{
-                                useDayjs().utc(i.created_at).format("DD MMM, YYYY")
-                            }}</span>
-                        </div>
-                    </template>
-                </UCard>
-            </div>
+                        </template>
+                    </UCard>
+                </li>
+            </ul>
             <div class="block mt-8" v-if="posts.data.length && posts.per_page > 1">
                 <UPagination
                     :max="posts.last_page"
