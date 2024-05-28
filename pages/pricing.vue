@@ -5,7 +5,7 @@ useSeoMeta({
 </script>
 
 <template>
-    <div>Page: pricing</div>
+    <ComingSoon />
 </template>
 
 <style scoped></style>
