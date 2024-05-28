@@ -4,10 +4,10 @@ import { TOAST } from "~/utils/toast";
 export const useCategoryState = () => {
     const router = useRouter();
     const route = useRoute();
+    const config = useRuntimeConfig().public;
 
     const categories = ref<CategoryBlogModel[]>([]);
     const categoryId = ref<number>(-1);
-    const config = useRuntimeConfig().public;
 
     const categoryActive = computed(() => {
         let active = {

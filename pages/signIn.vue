@@ -4,7 +4,9 @@ import { useAuthState, usePasswordState } from "~/modules/auth/auth.state";
 definePageMeta({
     layout: "user",
 });
-
+useSeoMeta({
+    title: "Login Account",
+});
 const { show: password, type: passwordType } = usePasswordState();
 const { body, loading, Login } = useAuthState();
 </script>

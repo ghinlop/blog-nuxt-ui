@@ -24,6 +24,10 @@ await findCategoryBySlug();
 
 posts.per_page = 3;
 await GetBlogList();
+
+useSeoMeta({
+    title: data.value?.data?.post_title,
+});
 </script>
 
 <template>
@@ -63,68 +67,10 @@ await GetBlogList();
                     <h2 class="font-bold text-2xl">Top Articles</h2>
                     <ul class="grid grid-cols-1 gap-8">
                         <li v-for="i in posts.data">
-                            <UCard :ui="{ base: 'min-h-full' }">
-                                <template #header>
-                                    <NuxtLink
-                                        tag="a"
-                                        :to="{
-                                            name: 'blog-category-detail',
-                                            params: {
-                                                category: categoryActive.slug,
-                                                detail: i.slug,
-                                            },
-                                        }"
-                                    >
-                                        <img
-                                            src="https://picsum.photos/seed/picsum/300/300"
-                                            alt=""
-                                            class="size-full object-cover rounded-xl"
-                                        />
-                                    </NuxtLink>
-                                </template>
-                                <NuxtLink
-                                    tag="a"
-                                    :to="{
-                                        name: 'blog-category-detail',
-                                        params: {
-                                            category: categoryActive.slug,
-                                            detail: i.slug,
-                                        },
-                                    }"
-                                >
-                                    <h3 class="font-bold line-clamp-2">
-                                        {{ i.post_title }}
-                                    </h3>
-                                </NuxtLink>
-                                <template #footer>
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex gap-3">
-                                            <div class="block">
-                                                <img
-                                                    src="https://ui-avatars.com/api/?name=Ghin+Lop&size=128"
-                                                    alt="Ghin Lop"
-                                                    class="size-8 rounded-full overflow-hidden inline-block"
-                                                />
-                                            </div>
-                                            <div class="flex flex-col">
-                                                <span
-                                                    class="uppercase font-normal text-zinc-500 text-[8px]"
-                                                    >write by</span
-                                                >
-                                                <strong class="text-xs">Ghin Lop</strong>
-                                            </div>
-                                        </div>
-                                        <span
-                                            class="text-zinc-500 text-[10px] uppercase"
-                                            >{{
-                                                useDayjs()
-                                                    .utc(i.created_at)
-                                                    .format("DD MMM, YYYY")
-                                            }}</span
-                                        >
-                                    </div>
-                                </template>
-                            </UCard>
+                            <BlogCard
+                                :category-slug="categoryActive.slug"
+                                :blog="i"
+                            ></BlogCard>
                         </li>
                     </ul>
                 </div>

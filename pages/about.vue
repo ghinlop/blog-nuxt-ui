@@ -1,9 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+useSeoMeta({
+    title: "About us",
+});
+</script>
 
 <template>
-  <div>
-    Page: about
-  </div>
+    <div>Page: about</div>
 </template>
 
 <style scoped></style>

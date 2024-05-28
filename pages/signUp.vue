@@ -4,7 +4,9 @@ import { useAuthState, usePasswordState } from "~/modules/auth/auth.state";
 definePageMeta({
     layout: "user",
 });
-
+useSeoMeta({
+    title: "Create a new account",
+});
 const { show: password, type: passwordType } = usePasswordState();
 const { show: retype_password, type: retype_passwordType } = usePasswordState();
 const { body, loading, Register } = useAuthState();

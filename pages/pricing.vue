@@ -1,9 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+useSeoMeta({
+    title: "Pricing",
+});
+</script>
 
 <template>
-  <div>
-    Page: pricing
-  </div>
+    <div>Page: pricing</div>
 </template>
 
 <style scoped></style>

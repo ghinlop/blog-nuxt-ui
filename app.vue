@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { useSettingState } from "./modules/settings/setting_state";
+import { useSettingStore } from "./modules/settings/setting_store";
+const config = useRuntimeConfig();
+
+const { GetSettings } = useSettingState();
+const settingStore = useSettingStore();
+const setting = await GetSettings();
+if (setting) settingStore.setting = setting;
+
+useSeoMeta({
+    titleTemplate: (title: string | undefined = undefined) => {
+        return (title ? title + " | " : "") + "Hiệp Khách Giang Hồ";
+    },
+    description: () =>
+        settingStore.setting ? settingStore.setting.site.description : "",
+    googlebot: () => (!config.public.web ? "nosnippet" : "max-snippet"),
+});
+</script>
+
 <template>
     <NuxtLayout>
         <NuxtLoadingIndicator color="#6C5FBC" />

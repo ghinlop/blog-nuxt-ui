@@ -1,11 +1,13 @@
 <script lang="ts" setup>
 import { useAuthState } from "~/modules/auth/auth.state";
 
+const { body, loading, Forgot } = useAuthState();
 definePageMeta({
     layout: "user",
 });
-
-const { body, loading, Forgot } = useAuthState();
+useSeoMeta({
+    title: "Forgot Password",
+});
 </script>
 
 <template>
