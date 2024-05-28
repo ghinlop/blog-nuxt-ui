@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    Page: blog/[id]
+    Page: blog/[category]/[detail]
   </div>
 </template>
 

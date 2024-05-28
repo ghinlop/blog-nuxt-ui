@@ -4,7 +4,7 @@
     <div class="flex flex-col min-h-dvh">
         <HeaderBox />
         <main class="flex-grow">
-            <div class="container px-7">
+            <div class="container px-7 lg:pt-32 pb-28 md:pt-20 pt-16">
                 <slot />
             </div>
         </main>

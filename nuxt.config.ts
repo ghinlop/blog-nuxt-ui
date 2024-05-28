@@ -24,6 +24,7 @@ export default defineNuxtConfig({
         "@nuxt/image",
         "nuxt-icon",
         "@nuxt/ui",
+        "dayjs-nuxt",
         // "nuxt-swiper",
     ],
     ui: {
@@ -42,6 +43,11 @@ export default defineNuxtConfig({
     router: {
         options: {
             scrollBehaviorType: "smooth",
+        },
+    },
+    routeRules: {
+        "/blog": {
+            redirect: "/blog/tat-ca",
         },
     },
     runtimeConfig: {

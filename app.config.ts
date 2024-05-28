@@ -23,5 +23,20 @@ export default defineAppConfig({
             },
             icon: { trailing: { pointer: "" } },
         },
+        card: {
+            base: "flex flex-col",
+            shadow: "shadow-2xl",
+            divide: "divide-y-0",
+            body: {
+                base: "flex-grow",
+                padding: "px-4 pb-5 pt-2",
+            },
+            header: {
+                padding: "px-4 pt-5 pb-0",
+            },
+            footer: {
+                padding: "px-4 pt-0 pb-5",
+            },
+        },
     },
 });

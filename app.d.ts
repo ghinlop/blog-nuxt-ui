@@ -14,6 +14,11 @@ declare global {
         }
 
         interface Router extends RouteLocation {}
+        interface Response<T> {
+            status: number;
+            data: T | undefined | null;
+            message: string | undefined | null;
+        }
     }
 
     namespace List {
